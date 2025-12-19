@@ -1,0 +1,59 @@
+html, body{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#mainDiv{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 50vw;
+  background-color: red;
+}
+#mainProgramDiv{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 90%; 
+  background-color: green;
+}
+#programNameMainDiv{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 10%;
+  background-color: blue;
+}
+#mainHeaderDiv{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+}
+#mainSessionDiv{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+  background-color: red;
+}
+#sessionTextDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  
+  
+}
+#onOffTextDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+}
