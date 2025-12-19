@@ -3,14 +3,16 @@ function Header(){
         <div id="mainHeaderDiv">
             <div id="mainSessionDiv">
                 <div id="sessionTextDiv">
-                    <h3>SESSION STATUS:</h3>
+                    <p>Session Status:</p>
                 </div>
-                <div id="onOffTextDiv">
-                    <h3>ACTIVE/CLOSED</h3>
+                <div id="onOffMainDiv">
+                    <div id="onOffTextDiv">
+                        <p>Locked</p>
+                    </div>
                 </div>
             </div>
             <div id="startSessionDiv">
-                <button id="startSessionButton"></button>
+                <button id="startSessionButton"> Start Session</button>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Header from "./Header"
-
+import Courses from "./Courses"
 function App() {
   
 
@@ -9,6 +9,12 @@ function App() {
       <div id="mainDiv">
         <div id="mainProgramDiv">
           <Header/>
+          <div id="mainProgramWrapperDiv">
+            <Courses/>
+          </div>
+          <div id="memoInputAndListingDiv">
+
+          </div>
         </div>
         <div id="programNameMainDiv">
 
