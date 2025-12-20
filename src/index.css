@@ -228,19 +228,19 @@ input::placeholder{
 .courseMemo h1{
   font-size: 17px;
 }
-#listCoursesWrapper{
+#listNotesWrapper{
   display: flex;
   flex-direction: column;
   height: 80%;
   width: 25%;
 }
-#listCoursesButtonDiv{
+#listNotesButtonDiv{
   display: flex;
   height: 20%;
   width: 100%;
   background-color: rgb(26, 26, 104);
 }
-#listCoursesButton{
+#listNotesButton{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,16 +248,16 @@ input::placeholder{
   width: 100%;
   background-color: rgb(26, 26, 104);
 }
-#listCoursesButton:hover{
+#listNotesButton:hover{
   background-color: rgb(41, 41, 134);
 }
-#listCoursesFilterDiv{
+#listNotesFilterDiv{
   display: flex;
   height: 15%;
   width: 100%;
   background-color: rgb(26, 26, 104);
 }
-#listCoursesFilterButton{
+#listNotesFilterButton{
   display: flex;
   align-items: center;
   justify-content:center;
@@ -265,6 +265,6 @@ input::placeholder{
   width: 100%;
   background-color: rgb(26, 26, 104);
 }
-#listCoursesFilterButton:hover{
+#listNotesFilterButton:hover{
   background-color: rgb(41, 41, 134);
 }

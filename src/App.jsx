@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Header from "./Header"
 import Courses from "./Courses"
 import AddCourses from "./AddCourses"
-import ListCourses from "./ListCourses"
+import ListNotes from "./ListNotes"
 function App() {
   
 
@@ -14,7 +14,7 @@ function App() {
           <div id="mainProgramWrapperDiv">
             <Courses/>
             <AddCourses/>
-            <ListCourses/>
+            <ListNotes/>
           </div>
           <div id="memoInputAndListingDiv">
 
