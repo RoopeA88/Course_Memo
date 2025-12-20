@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Header from "./Header"
 import Courses from "./Courses"
+import AddCourses from "./AddCourses"
+import ListCourses from "./ListCourses"
 function App() {
   
 
@@ -11,13 +13,26 @@ function App() {
           <Header/>
           <div id="mainProgramWrapperDiv">
             <Courses/>
+            <AddCourses/>
+            <ListCourses/>
           </div>
           <div id="memoInputAndListingDiv">
 
           </div>
         </div>
         <div id="programNameMainDiv">
-
+          
+          <div className="courseMemo" id="topC"><h1>C</h1></div>
+          <div className="courseMemo"><h1>O</h1></div>
+          <div className="courseMemo"><h1>U</h1></div>
+          <div className="courseMemo"><h1>R</h1></div>
+          <div className="courseMemo"><h1>S</h1></div>
+          <div className="courseMemo"><h1>E</h1></div>
+          <div className="courseMemo"><h1> </h1></div>
+          <div className="courseMemo"><h1>M</h1></div>
+          <div className="courseMemo"><h1>E</h1></div>
+          <div className="courseMemo"><h1>M</h1></div>
+          <div className="courseMemo"><h1>O</h1></div>
         </div>
       </div>
     </>
