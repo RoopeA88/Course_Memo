@@ -23,7 +23,11 @@ function App() {
             <ListNotes/>
           </div>
           <div id="memoInputAndListingDiv">
-
+            
+            <div id="addNoteWrapperDiv">
+              <div id="addNoteTitleDiv">Write a Note</div>
+              <div id="addNoteInputDiv"></div>
+            </div>
           </div>
         </div>
         <div id="programNameMainDiv">

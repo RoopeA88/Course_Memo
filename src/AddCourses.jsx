@@ -7,6 +7,8 @@ function AddCourses(){
     const courseInfoSwitch = useStore(state => state.courseInfoSwitch);
     const courseList = useStore(state => state.courseList);
     const emptyCourseErrorSwitch = useStore(state => state.emptyCourseErrorSwitch);
+    const duplicateCoursesErrorSwitch = useStore(state => state.duplicateCoursesErrorSwitch);
+    const sessionStatusErrorSwitch = useStore(state => state.sessionStatusErrorSwitch);
 
     return(
         <div id="addCoursesWrapperDiv">
@@ -19,11 +21,17 @@ function AddCourses(){
                 </div>
             </div>
             <div id="addedCourseInfoDiv">
-                { courseInfoSwitch &&(
+                { courseInfoSwitch && (
                 <div id="toggleableCourseInfoDiv">Opintojakso {courseList[courseList.length-1].name} lisätty ID:llä {courseList[courseList.length-1].id}</div>
                     )}
-                {emptyCourseErrorSwitch &&(
+                {emptyCourseErrorSwitch && (
                     <div id="emptyCourseDiv">Opintojakson nimi ei voi olla tyhjä!</div>
+                )}
+                {duplicateCoursesErrorSwitch && (
+                    <div id="duplicateCourseDiv">Opintojakso on jo olemassa!</div>
+                )}
+                {sessionStatusErrorSwitch && (
+                    <div id="sessionStatusErrorDiv">Aloita ensin sessio!</div>
                 )}
             </div>
         </div>

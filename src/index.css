@@ -89,7 +89,7 @@ button{
   height: 100%;
   background-color: rgb(26, 26, 104);
 }
-#onOffTextDiv{
+#offTextDiv{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,11 +98,23 @@ button{
   color: white;
   height: 35px;
   width: 70px;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 500;
   
 }
-
+#onTextDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  
+  color: white;
+  height: 35px;
+  width: 70px;
+  font-size: 14px;
+  font-weight: 500;
+  
+}
 
 
 #startSessionDiv{
@@ -327,4 +339,48 @@ input::placeholder{
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+#duplicateCourseDiv{
+  display: flex;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+  color: green;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+#sessionStatusErrorDiv{
+  display: flex;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+  color: green;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+#memoInputAndListingDiv{
+  display: flex;
+  height: 40%;
+  width: 100%;
+  background-color: blue;
+}
+#addNoteWrapperDiv{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+}
+#addNoteTitleDiv{
+  display: flex;
+  height: 27%;
+  width: 100%;
+  background-color: rgb(26, 26, 104);
+  font-size: 17px;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,4 +1,9 @@
+import {useStore} from "./store.js"
+
 function Header(){
+    const sessionStatus = useStore((state) => state.sessionStatus);
+    const openSession = useStore((state) => state.openSession);
+
     return(
         <div id="mainHeaderDiv">
             <div id="mainSessionDiv">
@@ -6,13 +11,21 @@ function Header(){
                     <p>Session Status:</p>
                 </div>
                 <div id="onOffMainDiv">
-                    <div id="onOffTextDiv">
+                    {!sessionStatus &&(
+                        <div id="offTextDiv">
                         <p>Locked</p>
                     </div>
+                    )}
+                    {sessionStatus &&(
+                        <div id="onTextDiv">
+                            <p>Active</p>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
             <div id="startSessionDiv">
-                <button id="startSessionButton"> Start Session</button>
+                <button id="startSessionButton" onClick={() => openSession()}> Start Session</button>
             </div>
         </div>
     )

@@ -16,7 +16,17 @@ export const useStore = create((set,get) =>({
 
     setEmptyCourseErrorSwitch: (errorBoolean) => set({emptyCourseErrorSwitch: errorBoolean}),
 
-    
+    duplicateCoursesErrorSwitch: false,
+
+    setDuplicateCoursesErrorSwitch: (errorBoolean) => set({duplicateCoursesErrorSwitch: errorBoolean}),
+
+    sessionStatus: false,
+
+    setSessionStatus: (sessionBoolean) => set({sessionStatus: sessionBoolean}),
+
+    sessionStatusErrorSwitch: false,
+
+    setSessionStatusErrorSwitch: (sessionStatusErrorBoolean) => set({sessionStatusErrorSwitch: sessionStatusErrorBoolean}),
 
     setCourseList: (newCourseList) => set((state) =>({
         courseList: [...state.courseList, ...newCourseList]
@@ -32,12 +42,31 @@ export const useStore = create((set,get) =>({
         }
     },
     addCourse: (courseName) =>{
+        const duplicateChecker = get().checkForDuplicateCourseNames(courseName);
         if(courseName.trim() == ""){
+            get().setDuplicateCoursesErrorSwitch(false);
             get().setCourseInfoSwitch(false);
+            get().setSessionStatusErrorSwitch(false);
             get().setEmptyCourseErrorSwitch(true);
             return;
+        } if(duplicateChecker == true){
+            get().setEmptyCourseErrorSwitch(false);
+            get().setCourseInfoSwitch(false);
+            get().setSessionStatusErrorSwitch(false);
+            get().setDuplicateCoursesErrorSwitch(true);
+            get().setCourseName("");
+            return;
+        } if(get().sessionStatus == false){
+            get().setEmptyCourseErrorSwitch(false);
+            get().setDuplicateCoursesErrorSwitch(false);
+            get().setCourseInfoSwitch(false);
+            get().setSessionStatusErrorSwitch(true);
+            get().setCourseName("");
+            return;
         }
+        get().setDuplicateCoursesErrorSwitch(false);
         get().setEmptyCourseErrorSwitch(false);
+        get().setSessionStatusErrorSwitch(false);
         const largestId = get().getLargestId();
         const course = {
             name: courseName,
@@ -65,10 +94,13 @@ export const useStore = create((set,get) =>({
         const courseList = get().courseList;
         for(let i = 0; i<courseList.length; i++){
             if(courseList[i].name == courseName){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
+    },
+    openSession: () => {
+        get().setSessionStatus(true);
     }
     
 }));
