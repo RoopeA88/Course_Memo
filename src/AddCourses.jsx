@@ -1,22 +1,30 @@
 import {useStore} from "./store.js"
 
 function AddCourses(){
-
+    const addCourse = useStore(state => state.addCourse);
     const courseName = useStore(state => state.courseName);
     const setCourseName = useStore(state => state.setCourseName);
+    const courseInfoSwitch = useStore(state => state.courseInfoSwitch);
+    const courseList = useStore(state => state.courseList);
+    const emptyCourseErrorSwitch = useStore(state => state.emptyCourseErrorSwitch);
 
     return(
         <div id="addCoursesWrapperDiv">
             <div id="addCourseDiv">
                 <div id="addCourseButtonDiv">
-                    <button id="addCourseButton">Add Course</button>
+                    <button id="addCourseButton" onClick={() => addCourse(courseName)}>Add Course</button>
                 </div>
                 <div id="addCourseInputDiv">
                     <input id="addCourseInput" placeholder="Input the course name" value={courseName} onChange={(e) => setCourseName(e.target.value)}></input>
                 </div>
             </div>
             <div id="addedCourseInfoDiv">
-
+                { courseInfoSwitch &&(
+                <div id="toggleableCourseInfoDiv">Opintojakso {courseList[courseList.length-1].name} lisätty ID:llä {courseList[courseList.length-1].id}</div>
+                    )}
+                {emptyCourseErrorSwitch &&(
+                    <div id="emptyCourseDiv">Opintojakson nimi ei voi olla tyhjä!</div>
+                )}
             </div>
         </div>
     )

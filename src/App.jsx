@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import {useStore} from "./store.js"
 import Header from "./Header"
 import Courses from "./Courses"
 import AddCourses from "./AddCourses"
 import ListNotes from "./ListNotes"
 function App() {
-  
+
+  const fetchCourse = useStore(state => state.fetchCourses)
+
+  useEffect(() =>{
+    fetchCourse()
+  }, [fetchCourse] );
 
   return (
     <>

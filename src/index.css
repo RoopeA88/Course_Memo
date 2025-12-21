@@ -151,8 +151,8 @@ button{
   flex-direction: column;
   height: 80%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  
+  justify-content: flex-start;
   background-color: rgb(0, 0, 0);
   overflow-y: auto;
 }
@@ -180,11 +180,13 @@ button{
   border:none;
   color: green;
 
-  text-align: center;
-  
+  text-align: left;
+  padding-left: 37px;
+  font-size: 14px;
 }
 input:focus{
   outline: none;
+  
 }
 input::placeholder{
   color: green;
@@ -227,12 +229,14 @@ input::placeholder{
 }
 .courseMemo h1{
   font-size: 17px;
+  
 }
 #listNotesWrapper{
   display: flex;
   flex-direction: column;
   height: 80%;
   width: 25%;
+  position:relative;
 }
 #listNotesButtonDiv{
   display: flex;
@@ -267,4 +271,60 @@ input::placeholder{
 }
 #listNotesFilterButton:hover{
   background-color: rgb(41, 41, 134);
+}
+#dropDownDiv{
+  height: 65%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  overflow-y: auto;
+  
+  
+}
+.dropDownButton{
+  padding-top: 10px;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+}
+.mappedCourseWrapperDiv{
+  display: flex;
+  flex-direction: row;
+  height: 15%;
+  width: 100%;
+  align-items: center;
+  justify-content: left;
+  
+}
+.mappedCourseDiv{
+  color: green;
+  display: flex;
+  font-size: 14px;
+  padding-left: 5px;
+}
+#toggleableCourseInfoDiv{
+  display: flex;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+  color: green;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+#emptyCourseDiv{
+  display: flex;
+  height: 30%;
+  width: 100%;
+  background-color: black;
+  color: green;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
