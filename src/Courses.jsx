@@ -12,6 +12,8 @@ function Courses(){
                 {courseList.map((course) => (
                     <div className="mappedCourseWrapperDiv" key={course.id}>
                         <div className="mappedCourseDiv"><p>{course.name}</p></div>
+                        <button className="addNoteCourses">ADD</button>
+                        <button className="deleteCourse"></button>
                     </div>
     ))}
 

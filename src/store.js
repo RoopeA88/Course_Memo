@@ -63,13 +63,15 @@ export const useStore = create((set,get) =>({
             get().setSessionStatusErrorSwitch(true);
             get().setCourseName("");
             return;
+        } if(courseName.length >16){
+            courseName = courseName.slice(0, 16);
         }
         get().setDuplicateCoursesErrorSwitch(false);
         get().setEmptyCourseErrorSwitch(false);
         get().setSessionStatusErrorSwitch(false);
         const largestId = get().getLargestId();
         const course = {
-            name: courseName,
+            name: courseName.toLowerCase(),
             id: largestId+1
         };
         set((state) =>({

@@ -25,13 +25,13 @@ function AddCourses(){
                 <div id="toggleableCourseInfoDiv">Opintojakso {courseList[courseList.length-1].name} lisätty ID:llä {courseList[courseList.length-1].id}</div>
                     )}
                 {emptyCourseErrorSwitch && (
-                    <div id="emptyCourseDiv">Opintojakson nimi ei voi olla tyhjä!</div>
+                    <div id="emptyCourseDiv">The input cannot be empty.</div>
                 )}
                 {duplicateCoursesErrorSwitch && (
-                    <div id="duplicateCourseDiv">Opintojakso on jo olemassa!</div>
+                    <div id="duplicateCourseDiv">Course already exists.</div>
                 )}
                 {sessionStatusErrorSwitch && (
-                    <div id="sessionStatusErrorDiv">Aloita ensin sessio!</div>
+                    <div id="sessionStatusErrorDiv">Session has to be active. Start a new session.</div>
                 )}
             </div>
         </div>

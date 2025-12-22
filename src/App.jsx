@@ -4,6 +4,8 @@ import Header from "./Header"
 import Courses from "./Courses"
 import AddCourses from "./AddCourses"
 import ListNotes from "./ListNotes"
+import AddNoteTitle from './AddNoteTitle'
+import AddNoteInput from './AddNoteInput'
 function App() {
 
   const fetchCourse = useStore(state => state.fetchCourses)
@@ -25,8 +27,8 @@ function App() {
           <div id="memoInputAndListingDiv">
             
             <div id="addNoteWrapperDiv">
-              <div id="addNoteTitleDiv">Write a Note</div>
-              <div id="addNoteInputDiv"></div>
+              <AddNoteTitle/>
+              <AddNoteInput/>
             </div>
           </div>
         </div>
