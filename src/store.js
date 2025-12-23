@@ -8,6 +8,16 @@ export const useStore = create((set,get) =>({
 
     courseList: [],
 
+    noteList: [],
+
+    activeCourse: -1,
+
+    activeCourseName: "none",
+
+    setActiveCourse: (newActiveCourse) => set({activeCourse: newActiveCourse}),
+
+    noteListWithSessionId: [],
+
     courseInfoSwitch: false,
 
     setCourseInfoSwitch: (newBoolean) => set({courseInfoSwitch: newBoolean}),
@@ -22,23 +32,38 @@ export const useStore = create((set,get) =>({
 
     sessionStatus: false,
 
+    SessionId: 0,
+
     setSessionStatus: (sessionBoolean) => set({sessionStatus: sessionBoolean}),
 
     sessionStatusErrorSwitch: false,
 
     setSessionStatusErrorSwitch: (sessionStatusErrorBoolean) => set({sessionStatusErrorSwitch: sessionStatusErrorBoolean}),
 
+    noteBoolean: false,
+
     setCourseList: (newCourseList) => set((state) =>({
         courseList: [...state.courseList, ...newCourseList]
     })),
+    setNotesList: (newNotesList) => set ((state) => ({
+        noteList: [...state.noteList, ...newNotesList]
+    })),
     fetchCourses: async () => {
         try{
-            const courseResponse = await fetch("https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses")
-
+            const courseResponse = await fetch("https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses");
             const apiCourses = await courseResponse.json();
             get().setCourseList(apiCourses);
         } catch (error){
             console.log("Failed to fetch courses", error)
+        }
+    },
+    fetchNotes: async () => {
+        try{
+            const noteResponse = await fetch("https://luentomuistiinpano-api.netlify.app/.netlify/functions/notes");
+            const apiNotes = await noteResponse.json();
+            get().setNotesList(apiNotes);
+        } catch (error){
+            console.log("Failed to fetch notes" + error);
         }
     },
     addCourse: (courseName) =>{
@@ -103,6 +128,54 @@ export const useStore = create((set,get) =>({
     },
     openSession: () => {
         get().setSessionStatus(true);
+        const uniqueSession = crypto.randomUUID();
+        set((state) =>({
+            sessionId: uniqueSession
+        }))
+    },
+    transferApiNotes: () => {
+        const originalNoteList = get().noteList;
+        
+        for(let i = 0; i<originalNoteList.length; i++){
+            const note = {
+                id: originalNoteList[i].id,
+                text: originalNoteList[i].text,
+                course: {
+                    id: originalNoteList[i].course.id,
+                    name: originalNoteList[i].course.name,
+                },
+                timestamp: originalNoteList[i].timestamp,
+                sessionId: -1
+            }
+            set((state) =>({
+                noteListWithSessionId:[...state.noteListWithSessionId, note]
+            }));
+        }
+
+    },
+    getFormattedTimestamp: () => {
+        const date = new Date();
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
+    add: (courseId) => {
+        get().setActiveCourse(courseId);
+        const courseList = get().courseList;
+        for(let i = 0; i<courseList.length;i++){
+            if(courseList[i].id == courseId){
+                set({activeCourseName: courseList[i].name});
+                set({noteBoolean: true});
+            }
+        }
     }
+
     
 }));

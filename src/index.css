@@ -1,15 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 html, body{
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
-  font-family:"Work Sans", sans-serif;
+  font-family:"Pixelify Sans", sans-serif;
   color: rgb(187, 102, 102);
+  background-color: black;
 }
 
 button{
-  all:unset;
+  border: none;
+  color: green;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: none;
+  font-family:"Pixelify Sans", sans-serif;
+}
+button:hover{
+  border: 1px solid green;
 }
 
 
@@ -27,6 +39,7 @@ button{
   height: 100vh;
   width: 50vw;
   background-color: rgb(6, 19, 64);
+  background-color: black;
 }
 #mainProgramDiv{
   display: flex;
@@ -43,6 +56,7 @@ button{
   width: 100%;
   height: 50%;
   background-color: rgb(6, 19, 64);
+  background-color: black;
 
 }
 #programNameMainDiv{
@@ -52,6 +66,7 @@ button{
   height: 100%;
   width: 10%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #mainHeaderDiv{
   display: flex;
@@ -69,6 +84,7 @@ button{
   width: 50%;
   height: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
   
 }
 #sessionTextDiv{
@@ -78,7 +94,7 @@ button{
   width: 50%;
   height: 100%;
   font-size: 1.1rem;
-  
+  color: green;
   
 }
 #onOffMainDiv{
@@ -88,6 +104,7 @@ button{
   width: 50%;
   height: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #offTextDiv{
   display: flex;
@@ -135,12 +152,16 @@ button{
   
   background-color: rgb(26, 26, 104);
   color: rgb(187, 102, 102);
+  color: green;
   font-size: 1.1rem;
+  background-color: black;
   
   
 }
 #startSessionButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
+  border: 1px solid green;
 }
 #coursesMainDiv{
   display: flex;
@@ -155,18 +176,22 @@ button{
   height: 20%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
   align-items: center;
   justify-content: center;
+  color: green;
 }
 #coursesListedDiv{
   display: flex;
   flex-direction: column;
   height: 80%;
-  width: 12.25vw;
+  width: 14.25vw;
   
   justify-content: flex-start;
   background-color: rgb(0, 0, 0);
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 #addCoursesWrapperDiv{
   display: flex;
@@ -174,6 +199,7 @@ button{
   height: 80%;
   width: 12.25vw;
   background-color: rgb(26, 26, 104);
+  background-color: black;
   gap: 20%;
 }
 #addCourseDiv{
@@ -189,12 +215,15 @@ button{
   height: 100%;
   background-color: black;
   
-  border:none;
+  border: none;
   color: green;
-
+  box-sizing: border-box;
   text-align: left;
   
   font-size: 0.9rem;
+}
+#addCourseInput:hover{
+  border:1px solid green;
 }
 #addCourseInput::placeholder{
   text-align: center;
@@ -205,6 +234,7 @@ input:focus{
 }
 input::placeholder{
   color: green;
+  font-family:"Pixelify Sans", sans-serif;
 }
 
 #addCourseButtonDiv{
@@ -220,9 +250,11 @@ input::placeholder{
   height: 100%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #addCourseButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
 }
 #addCourseInputDiv{
   display: flex;
@@ -244,6 +276,7 @@ input::placeholder{
 }
 .courseMemo h1{
   font-size: 1.1rem;
+  color: green;
   
 }
 #listNotesWrapper{
@@ -258,6 +291,7 @@ input::placeholder{
   height: 20%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #listNotesButton{
   display: flex;
@@ -266,9 +300,11 @@ input::placeholder{
   height: 100%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #listNotesButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
 }
 #listNotesFilterDiv{
   display: flex;
@@ -283,9 +319,11 @@ input::placeholder{
   height: 100%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
 }
 #listNotesFilterButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
 }
 #dropDownDiv{
   height: 65%;
@@ -305,6 +343,7 @@ input::placeholder{
   align-items: center;
   justify-content: center;
   color: green;
+  background-color: black;
 }
 .mappedCourseWrapperDiv{
   display: flex;
@@ -321,7 +360,7 @@ input::placeholder{
   color: green;
   display: flex;
   font-size: 0.9rem;
-  padding-left: 0.3vw;
+  padding-left: 0.15vw;
 }
 #toggleableCourseInfoDiv{
   display: flex;
@@ -385,9 +424,11 @@ input::placeholder{
   height: 27%;
   width: 100%;
   background-color: rgb(26, 26, 104);
+  background-color: black;
   font-size: 1.1rem;
   align-items: center;
   justify-content: center;
+  color: green;
 }
 #addNoteInputWrapperDiv{
   display: flex;
@@ -395,6 +436,7 @@ input::placeholder{
   width: 100%;
   height: 100%;
   background-color: rgb(6, 19, 64);
+  background-color: black;
   
 }
 #addNoteInputDiv{
@@ -403,7 +445,7 @@ input::placeholder{
   height: 24.7vh;
   background-color: rgb(6, 19, 64);
   padding-top: 4.5vh;
-  
+  background-color: black;
   position: relative;
   
 }
@@ -415,6 +457,7 @@ input::placeholder{
   width: 31%;
   height: 100%;
   background-color: rgb(6, 19, 64);
+  background-color: black;
   position: relative;
 }
 #addNoteButton{
@@ -423,7 +466,8 @@ input::placeholder{
   background-color: rgb(26, 26, 104); 
   text-align: center;
   position: absolute;
-  top: 4.5vh;
+  top: 4.4vh;
+  background-color:black;
 }
 #saveNotesButton{
   height: 72.88px;
@@ -432,12 +476,15 @@ input::placeholder{
   text-align: center;
   position:absolute;
   top: 12.5vh;
+  background-color: black;
 }
 #addNoteButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
 }
 #saveNotesButton:hover{
   background-color: rgb(41, 41, 134);
+  background-color: black;
 }
 #addNoteInputField{
   width: 86%;
@@ -449,7 +496,11 @@ input::placeholder{
   top: 4.5vh;
   left: 1.4vw;
   text-align: left;
+  z-index: 2;
   
+}
+#addNoteInputField:hover{
+  border: 1px solid green;
 }
 #addNoteInputField::placeholder{
   text-align: center;
@@ -466,11 +517,13 @@ input::placeholder{
 #betweenInputDiv{
   display: flex;
   width: 86.6%;
-  height: 65.76px;
+  height: 64.76px;
   background-color: rgb(26, 26, 104);
   position: absolute;
   left: 1.4vw;
   top: 9vh;
+  background-color: black;
+  z-index: 1;
 }
 .addNoteCourses{
   background-color: green;
@@ -490,5 +543,13 @@ input::placeholder{
   color: white;
   text-align: center;
   position: absolute;
-  left: 9.97vw;
+  left: 10.5vw;
+}
+.addNoteCourses:hover{
+  background-color: rgb(0, 78, 0);
+  border: none;
+}
+.deleteCourse:hover{
+  background-color: rgb(179, 2, 2);
+  border: none;
 }
