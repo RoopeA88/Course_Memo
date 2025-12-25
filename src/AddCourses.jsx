@@ -9,7 +9,7 @@ function AddCourses(){
     const emptyCourseErrorSwitch = useStore(state => state.emptyCourseErrorSwitch);
     const duplicateCoursesErrorSwitch = useStore(state => state.duplicateCoursesErrorSwitch);
     const sessionStatusErrorSwitch = useStore(state => state.sessionStatusErrorSwitch);
-
+    
     return(
         <div id="addCoursesWrapperDiv">
             <div id="addCourseDiv">
@@ -33,6 +33,7 @@ function AddCourses(){
                 {sessionStatusErrorSwitch && (
                     <div id="sessionStatusErrorDiv">Session has to be active. Start a new session.</div>
                 )}
+
             </div>
         </div>
     )

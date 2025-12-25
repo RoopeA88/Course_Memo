@@ -43,8 +43,16 @@ export const useStore = create((set,get) =>({
     noteBoolean: false,
 
     noteText: "",
+    
+    listNotesBoolean: false,
+
+    disableAddBoolean: false,
+
+    lockedAddButtonError: false,
 
     inputMessage: "",
+
+    inputMessageColor: "yellow",
 
     setNoteText: (newNoteText) => set({noteText: newNoteText}),
 
@@ -81,12 +89,14 @@ export const useStore = create((set,get) =>({
             get().setDuplicateCoursesErrorSwitch(false);
             get().setCourseInfoSwitch(false);
             get().setSessionStatusErrorSwitch(false);
+            
             get().setEmptyCourseErrorSwitch(true);
             return;
         } if(duplicateChecker == true){
             get().setEmptyCourseErrorSwitch(false);
             get().setCourseInfoSwitch(false);
             get().setSessionStatusErrorSwitch(false);
+            
             get().setDuplicateCoursesErrorSwitch(true);
             get().setCourseName("");
             return;
@@ -94,6 +104,7 @@ export const useStore = create((set,get) =>({
             get().setEmptyCourseErrorSwitch(false);
             get().setDuplicateCoursesErrorSwitch(false);
             get().setCourseInfoSwitch(false);
+            
             get().setSessionStatusErrorSwitch(true);
             get().setCourseName("");
             return;
@@ -103,6 +114,7 @@ export const useStore = create((set,get) =>({
         get().setDuplicateCoursesErrorSwitch(false);
         get().setEmptyCourseErrorSwitch(false);
         get().setSessionStatusErrorSwitch(false);
+        
         const largestId = get().getLargestId();
         const course = {
             name: courseName.toLowerCase(),
@@ -146,6 +158,7 @@ export const useStore = create((set,get) =>({
     },
     openSession: () => {
         get().setSessionStatus(true);
+        set({disableAddBoolean: false})
         const uniqueSession = crypto.randomUUID();
         set((state) =>({
             sessionId: uniqueSession
@@ -181,6 +194,11 @@ export const useStore = create((set,get) =>({
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
     add: (courseId) => {
+        if(get().disableAddBoolean == true){
+            set({inputMessageColor: "red"})
+            set({inputMessage: "You cannot change the course after adding a note."});
+            return;
+        }
         if(get().sessionStatus == false){
             get().setSessionStatusErrorSwitch(true);
             return;
@@ -207,8 +225,12 @@ export const useStore = create((set,get) =>({
         const noteListWithSessionId = get().noteListWithSessionId
 
         if(noteText1 == ""){
+            set({inputMessageColor: "red"});
             set({inputMessage: "Note cannot be empty."});
             return;
+        }
+        if(noteText1.length > 80){
+            noteText1 = noteText1.slice(0, 80);
         }
 
         const note = {
@@ -226,9 +248,16 @@ export const useStore = create((set,get) =>({
         }));
 
         set({noteText: ""});
-        set({inputMessage: "Note (ID:" + biggestId + ") added for the course "+activeCourseName+"."})
-        console.log(get().noteListWithSessionId[noteListWithSessionId.length]);
+        set({inputMessageColor: "green"});
+        set({inputMessage: "Note (ID:" + biggestId + ") added for the course "+activeCourseName+"."});
+        set({disableAddBoolean: true});
     },
+    saveNote: () => {
+        set({sessionStatus: false});
+        set({noteBoolean: false});
+        set({listNotesBoolean: true});
+
+    }
 
 
     

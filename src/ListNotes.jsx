@@ -1,10 +1,11 @@
 import { useState } from "react"
+import {useStore} from "./store"
 function ListNotes(){
     function openDropDown(){
         setIsOpen(!isOpen);
     }
     const [isOpen, setIsOpen] = useState(false);
-
+    
     return(
         <div id="listNotesWrapper">
             <div id="listNotesButtonDiv">
