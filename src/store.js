@@ -42,11 +42,20 @@ export const useStore = create((set,get) =>({
 
     noteBoolean: false,
 
+    noteText: "",
+
+    inputMessage: "",
+
+    setNoteText: (newNoteText) => set({noteText: newNoteText}),
+
     setCourseList: (newCourseList) => set((state) =>({
         courseList: [...state.courseList, ...newCourseList]
     })),
     setNotesList: (newNotesList) => set ((state) => ({
         noteList: [...state.noteList, ...newNotesList]
+    })),
+    setNoteListWithSessionId: (newList) => set ((state) => ({
+        noteListWithSessionId: [...state.noteListWithSessionId, ...newList]
     })),
     fetchCourses: async () => {
         try{
@@ -116,7 +125,16 @@ export const useStore = create((set,get) =>({
         return biggest;
 
     },
-
+    getLargestNoteId: () =>{
+        let biggest = 0;
+        const noteList = get().noteListWithSessionId;
+        for(let i = 0; i< noteList.length; i++){
+            if(noteList[i].id > biggest){
+                biggest = noteList[i].id;
+            }
+        }
+        return biggest;
+    },
     checkForDuplicateCourseNames: (courseName) =>{
         const courseList = get().courseList;
         for(let i = 0; i<courseList.length; i++){
@@ -136,21 +154,17 @@ export const useStore = create((set,get) =>({
     transferApiNotes: () => {
         const originalNoteList = get().noteList;
         
-        for(let i = 0; i<originalNoteList.length; i++){
-            const note = {
-                id: originalNoteList[i].id,
-                text: originalNoteList[i].text,
-                course: {
-                    id: originalNoteList[i].course.id,
-                    name: originalNoteList[i].course.name,
-                },
-                timestamp: originalNoteList[i].timestamp,
-                sessionId: -1
-            }
-            set((state) =>({
-                noteListWithSessionId:[...state.noteListWithSessionId, note]
-            }));
-        }
+        const newNoteList = originalNoteList.map((note) =>({
+            id: note.id,
+            text: note.text,
+            course: {
+                id: note.course.id,
+                name: note.course.name,
+            },
+            timestamp: note.timestamp,
+            sessionId: -1
+        }));
+        get().setNoteListWithSessionId(newNoteList);
 
     },
     getFormattedTimestamp: () => {
@@ -167,6 +181,13 @@ export const useStore = create((set,get) =>({
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
     add: (courseId) => {
+        if(get().sessionStatus == false){
+            get().setSessionStatusErrorSwitch(true);
+            return;
+        }
+        if(get().sessionStatus == true){
+            get().setSessionStatusErrorSwitch(false);
+        }
         get().setActiveCourse(courseId);
         const courseList = get().courseList;
         for(let i = 0; i<courseList.length;i++){
@@ -175,7 +196,40 @@ export const useStore = create((set,get) =>({
                 set({noteBoolean: true});
             }
         }
-    }
+    },
+    addNote: () =>{
+        const activeCourseId = get().activeCourse;
+        const noteText1 = get().noteText;
+        const sessionId = get().sessionId;
+        const activeCourseName = get().activeCourseName;
+        const biggestId = get().getLargestNoteId();
+        const timestamp = get().getFormattedTimestamp();
+        const noteListWithSessionId = get().noteListWithSessionId
+
+        if(noteText1 == ""){
+            set({inputMessage: "Note cannot be empty."});
+            return;
+        }
+
+        const note = {
+            id: biggestId+1,
+            text: noteText1,
+            course: {
+                id: activeCourseId,
+                name: activeCourseName,
+            },
+            timestamp: timestamp,
+            sessionId: sessionId,
+        }
+        set((state) => ({
+            noteListWithSessionId: [...state.noteListWithSessionId, note]
+        }));
+
+        set({noteText: ""});
+        set({inputMessage: "Note (ID:" + biggestId + ") added for the course "+activeCourseName+"."})
+        console.log(get().noteListWithSessionId[noteListWithSessionId.length]);
+    },
+
 
     
 }));

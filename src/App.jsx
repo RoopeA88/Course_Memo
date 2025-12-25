@@ -13,19 +13,20 @@ function App() {
   const transferNotes = useStore(state => state.transferApiNotes);
   const noteBoolean = useStore(state => state.noteBoolean);
 
+
   useEffect(() =>{
     fetchCourse()
+    
   }, [fetchCourse] );
 
   useEffect(() =>{
-    fetchNote()
-  }, [fetchNote]);
-
-  useEffect(() => {
-    transferNotes();
-
+    fetchNote().then(() =>{
+      transferNotes();
+    })
     
-  }, []);
+  }, [fetchNote, transferNotes]);
+
+
 
   return (
     <>

@@ -10,6 +10,7 @@ html, body{
   font-family:"Pixelify Sans", sans-serif;
   color: rgb(187, 102, 102);
   background-color: black;
+  box-sizing: border-box;
 }
 
 button{
@@ -410,7 +411,8 @@ input::placeholder{
   display: flex;
   height: 40%;
   width: 100%;
-  background-color: blue;
+  background-color: black;
+  
 }
 #addNoteWrapperDiv{
   display: flex;
@@ -496,11 +498,14 @@ input::placeholder{
   top: 4.5vh;
   left: 1.4vw;
   text-align: left;
-  z-index: 2;
+  
+  padding: 0;
+  margin: none;
   
 }
 #addNoteInputField:hover{
   border: 1px solid green;
+  box-sizing: border-box;
 }
 #addNoteInputField::placeholder{
   text-align: center;
@@ -513,9 +518,11 @@ input::placeholder{
   position:absolute;
   top: 16vh;
   left: 1.4vw;
+  box-sizing: border-box;
+  color: green;
 }
 #betweenInputDiv{
-  display: flex;
+  display: none;
   width: 86.6%;
   height: 64.76px;
   background-color: rgb(26, 26, 104);
