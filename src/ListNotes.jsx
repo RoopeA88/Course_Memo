@@ -5,21 +5,21 @@ function ListNotes(){
         setIsOpen(!isOpen);
     }
     const [isOpen, setIsOpen] = useState(false);
-    
+    const courseList = useStore(state => state.courseList);
+    const listNotesButton = useStore(state => state.listNotesButton);
     return(
         <div id="listNotesWrapper">
             <div id="listNotesButtonDiv">
-                <button id="listNotesButton">List Notes</button>
+                <button id="listNotesButton" onClick={() => listNotesButton("all")}>List Notes</button>
             </div>
             <div id="listNotesFilterDiv">
                 <button id="listNotesFilterButton" onClick={openDropDown}>Filter</button>
             </div>
             {isOpen &&(
                 <div id="dropDownDiv">
-                    <button className="dropDownButton">testi1</button>
-                    <button className="dropDownButton">testi2</button>
-                    <button className="dropDownButton">testi3</button>
-                    <button className="dropDownButton">testi3</button>
+                    {courseList.map((course) =>(
+                        <button className="dropdownButton" key={course.id} onClick={() => listNotesButton(course.id)}>{course.name}</button>
+                    ))}
                     
                     
                     

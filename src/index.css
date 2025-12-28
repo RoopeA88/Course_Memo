@@ -11,6 +11,7 @@ html, body{
   color: rgb(187, 102, 102);
   background-color: black;
   box-sizing: border-box;
+  
 }
 
 button{
@@ -333,6 +334,7 @@ input::placeholder{
   flex-direction: column;
   background-color: black;
   overflow-y: auto;
+  gap: 5px;
   
   
 }
@@ -603,8 +605,130 @@ input::placeholder{
   padding: 1vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  
   flex-direction: column;
   overflow-y: auto;
   gap: 1vh;
+}
+.dropdownButton{
+  display: flex;
+  background-color: black;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 2.5vh;
+}
+#listNotesButtonAreaWrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+#listNotesButtonAreaTitle{
+  display: flex;
+  width: 100%;
+  height: 27%;
+  background-color: black;
+  color: green;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+#listNotesButtonAreaDiv{
+  display: flex;
+  width: 100%;
+  height: 73%;
+  background-color: black;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  
+  
+}
+.allListedCoursesWrapper{
+  display: flex;
+  height: 7.3vh;
+  width: 100%;
+  background-color: black;
+  flex-direction: column;
+  color: green;
+  
+}
+.listedCoursesInfoWrapper{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 3.65vh;
+  justify-content: space-evenly;
+  position: relative;
+  
+}
+.listedCoursesCourseName{
+  position: absolute;
+  
+  left: 2vw;
+  
+  height: 3.65vh;
+  display: flex;
+  align-items: center;
+}
+.listedCoursesId{
+  position: absolute;
+  
+  left: 21vw;
+  height: 3.65vh;
+  
+  display: flex;
+  align-items: center;
+}
+.listedCoursesTimestamp{
+  position: absolute;
+  height: 3.65vh;
+  left: 35vw;
+  
+  display: flex;
+  align-items: center;
+}
+.listedCoursesText{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 3.65vh;
+  
+  width: 91%;
+  position: absolute;
+  right: 0;
+  
+  
+}
+.listedCoursesText p{
+  padding-left: 10px;
+  text-decoration: underline;
+}
+.deleteNote{
+  width: 35px;
+  height: 20px;
+  font-size: 0.8em;
+  background-color: red;
+  color: white;
+  position: absolute;
+  left: 2vw;
+  top: 0.65vh;
+}
+.listedCoursesTextWrapper{
+  display: flex;
+  flex-direction: row;
+  height: 3.65vh;
+  width: 100%;
+  
+  position: relative;
+}
+.deleteNoteButtonDiv{
+  display: flex;
+  height: 3.65vh;
+  position: relative;
+  width: 9%;
+  
 }

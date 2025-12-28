@@ -54,6 +54,14 @@ export const useStore = create((set,get) =>({
 
     inputMessageColor: "yellow",
 
+    listNotesButtonBoolean: false,
+
+    allCourses: false,
+
+    specificCourse: -1,
+
+    courseNameForListingTitle: "",
+
     setNoteText: (newNoteText) => set({noteText: newNoteText}),
 
     setCourseList: (newCourseList) => set((state) =>({
@@ -160,6 +168,7 @@ export const useStore = create((set,get) =>({
         get().setSessionStatus(true);
         set({disableAddBoolean: false})
         const uniqueSession = crypto.randomUUID();
+        set({listNotesBoolean: false})
         set((state) =>({
             sessionId: uniqueSession
         }))
@@ -210,6 +219,7 @@ export const useStore = create((set,get) =>({
         const courseList = get().courseList;
         for(let i = 0; i<courseList.length;i++){
             if(courseList[i].id == courseId){
+                set({listNotesButtonBoolean: false})
                 set({activeCourseName: courseList[i].name});
                 set({noteBoolean: true});
             }
@@ -217,7 +227,7 @@ export const useStore = create((set,get) =>({
     },
     addNote: () =>{
         const activeCourseId = get().activeCourse;
-        const noteText1 = get().noteText;
+        let noteText1 = get().noteText;
         const sessionId = get().sessionId;
         const activeCourseName = get().activeCourseName;
         const biggestId = get().getLargestNoteId();
@@ -229,8 +239,8 @@ export const useStore = create((set,get) =>({
             set({inputMessage: "Note cannot be empty."});
             return;
         }
-        if(noteText1.length > 80){
-            noteText1 = noteText1.slice(0, 80);
+        if(noteText1.length > 74){
+            noteText1 = noteText1.slice(0, 74);
         }
 
         const note = {
@@ -257,7 +267,28 @@ export const useStore = create((set,get) =>({
         set({noteBoolean: false});
         set({listNotesBoolean: true});
 
-    }
+    },
+    listNotesButton: (allOrSpecificId) =>{
+        set({listNotesBoolean: false});
+        set({listNotesButtonBoolean: true});
+        if(allOrSpecificId == "all"){
+            set({courseNameForListingTitle: "all"});
+            set({allCourses: true});
+        } else{
+            set({allCourses: false});
+            set({specificCourse: allOrSpecificId})
+        }
+
+    },
+    delCourse: (courseId) =>{
+        let newCourseList = get().courseList;
+        const targetedCourse = newCourseList.find(({id}) => id === courseId);
+        newCourseList = newCourseList.filter(course => course.id !== targetedCourse.id);
+        set({courseList: newCourseList});
+        let newNotes = get().noteListWithSessionId;
+        newNotes = newNotes.filter(note =>  note.course.id !== courseId);
+        set({noteListWithSessionId: newNotes});
+    },
 
 
     

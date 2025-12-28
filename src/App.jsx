@@ -7,6 +7,7 @@ import ListNotes from "./ListNotes"
 import AddNoteTitle from './AddNoteTitle'
 import AddNoteInput from './AddNoteInput'
 import ListNotesArea from "./ListNotesArea"
+import ListNotesButtonArea from "./ListNotesButtonArea.jsx"
 function App() {
 
   const fetchCourse = useStore(state => state.fetchCourses);
@@ -14,6 +15,7 @@ function App() {
   const transferNotes = useStore(state => state.transferApiNotes);
   const noteBoolean = useStore(state => state.noteBoolean);
   const listNotesBoolean = useStore(state => state.listNotesBoolean);
+  const listNotesButtonBoolean = useStore(state => state.listNotesButtonBoolean);
 
 
   useEffect(() =>{
@@ -49,6 +51,9 @@ function App() {
             )}
             {listNotesBoolean && (
               <ListNotesArea/>
+            )}
+            {listNotesButtonBoolean && (
+              <ListNotesButtonArea/>
             )}
 
           </div>
