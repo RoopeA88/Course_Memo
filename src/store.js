@@ -217,6 +217,7 @@ export const useStore = create((set,get) =>({
             return;
         }
         if(get().sessionStatus == false){
+            set({emptyCourseErrorSwitch: false});
             get().setSessionStatusErrorSwitch(true);
             return;
         }
@@ -227,8 +228,8 @@ export const useStore = create((set,get) =>({
         const courseList = get().courseList;
         for(let i = 0; i<courseList.length;i++){
             if(courseList[i].id == courseId){
-                
-                set({listNotesButtonBoolean: false})
+                set({emptyCourseErrorSwitch: false});
+                set({listNotesButtonBoolean: false});
                 set({activeCourseName: courseList[i].name});
                 set({noteBoolean: true});
             }
@@ -312,7 +313,12 @@ export const useStore = create((set,get) =>({
         newNotes = newNotes.filter(note =>  note.course.id !== courseId);
         set({noteListWithSessionId: newNotes});
     },
-
+    delNote: (noteId) => {
+        let newNoteList = get().noteListWithSessionId;
+        const targetedNote = newNoteList.find(({id}) => id === noteId);
+        newNoteList = newNoteList.filter(note => note.id !== targetedNote.id);
+        set({noteListWithSessionId: newNoteList});
+    },
     doesNoteForSpecificCourseExist: (courseId) => {
         const notes = get().noteListWithSessionId;
         let numberOfNotes = 0;

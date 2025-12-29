@@ -1,16 +1,28 @@
-# React + Vite
+asenna riippuvuudet kirjoittamalla "npm install" ja aja projekti kirjoittamalla "npm run dev" ilman lainausmerkkejä. projektissa on käytetty zustand-tilankäsittelykirjastoa, jonka pitäisi asentua "npm install" mukana. jos install ei kuitenkaan toimi odotetusti, kirjoita "npm install zustand".
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ohjelmassa on ainakin yritetty toteuttaa kaikki vaatimukset ja sen lisäksi olen tehnyt jotain omia muutoksia. Se onko tämä ristiriidassa tehtävänannon kanssa on opettajan päätettävissä. Pääasiassa halusin rakentaa uuden katseen kestävän version portfolioon ja näyttää sen jollekin.
 
-Currently, two official plugins are available:
+Omia muutoksia: 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+kun kurssi lisätään listaan, se pyöräytetään toLowerCase-funktion läpi ja kurssin nimen maksimipituus on 16 merkkiä, ettei layout mene rikki.
+Jos kurssin nimen pituus on yli 16 merkkiä, niin loput leikataan pois slicella.
 
-## React Compiler
+Muistiinpano voi olla maksimissaan 80 merkkiä pitkä ja tässäkin leikataan samalla tavalla kuin edellä.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ohjelmassa ei käytetä vierityspalkkia, koska se tuhoaa estetiikan. Kurssiboksia ja muistiinpanoboksia voi vierittää silti hiiren rullalla.
 
-## Expanding the ESLint configuration
+Minkään napin (poislukien Start Session) ei pitäisi ohjelmassa toimia, jos sessio ei ole päällä. Näistä pitäisi tulla myös punainen virheilmoitus. Tässä on niin monta booleania hoitamassa asioita, että olen löytänyt bugeja jatkuvasti enkä yllättyisi, jos jokin elementti vielä käyttäytyy hassusti.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Kun kurssi poistetaan niin kaikki sen sisältämät muistiinpanot poistetaan.
+
+
+
+Tekoälyn käyttö:
+
+Tekoälyn käyttö oli paljon vähäisempää kuin ensimmäisessä versiossa. Tällä kertaa en käyttänyt co-pilottia lainkaan vaan halusin oppia syntaksin.
+Käytin tarkoituksella myös perinteisempää tiedonhakua enemmän, kuten Mozillan developer-sivua sekä Stack Overflowta. Hiukan myös Youtubesta katsoin tutoriaaleja.
+Deepseek oli käytössä silloin kun perinteiseen funktioon tuli joku mutka tai funktio ei toiminut, vaikka kaikki näytti olevan kunnossa (varsinkin projektin alkupuolella). Esimerkiksi kun find() tai filter() metodeissa piti päästä käsiksi muistiinpano-objektin sisäiseen course-objektiin. Myöhemmin ymmärsin käyttää enemmän developer toolsin konsolia, jos joku nappi ei toiminut tai sivu meni pimeäksi.
+Joitain unohdettuja CSS-asioita kyselin tekoälyltä, kuten placeholderien keskittäminen.
+Muutaman kerran jouduin pasteamaan koko komponentin DeepSeekille. Esimerkkinä ListNotesButtonArea.jsx liittyen siihen, että joidenkin ehtojen pitikin olla mappauksen ulkopuolella.
+.then() funktio fetchauksen yhteydessä oli tekoälyn idea, kun lista piti kopioida sekä getFormattedTimestamp on kokonaan tekoälyn tuotos.
+

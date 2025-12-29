@@ -6,6 +6,7 @@ function ListNotesButtonArea(){
     const allCourses = useStore(state => state.allCourses);
     const courseNameForListingTitle = useStore(state => state.courseNameForListingTitle);
     const doesNoteForSpecificCourseExist = useStore(state => state.doesNoteForSpecificCourseExist);
+    const delNote = useStore((state) => state.delNote);
     return(
         <div id="listNotesButtonAreaWrapper">
             <div id="listNotesButtonAreaTitle">
@@ -23,7 +24,7 @@ function ListNotesButtonArea(){
                                 </div>
                                 <div className="listedCoursesTextWrapper">
                                     <div className="deleteNoteButtonDiv">
-                                        <button className="deleteNote">DEL</button>
+                                        <button className="deleteNote" onClick={() => delNote(note.id)}>DEL</button>
                                     </div>
                                     <div className="listedCoursesText">
                                         
@@ -45,7 +46,7 @@ function ListNotesButtonArea(){
                                 </div>
                                 <div className="listedCoursesTextWrapper">
                                     <div className="deleteNoteButtonDiv">
-                                        <button className="deleteNote">DEL</button>
+                                        <button className="deleteNote" onClick={() => delNote(note.id)}>DEL</button>
                                     </div>
                                     <div className="listedCoursesText">
                                         

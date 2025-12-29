@@ -4,6 +4,7 @@ function ListNotes(){
     const sessionStatus = useStore((state) => state.sessionStatus);
     const sessionStatusErrorSwitch = useStore((state) => state.setSessionStatusErrorSwitch)
     
+    
     function openDropDown(){
         if(!sessionStatus){
             sessionStatusErrorSwitch(true)
