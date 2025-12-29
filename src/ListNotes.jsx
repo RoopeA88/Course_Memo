@@ -1,7 +1,14 @@
 import { useState } from "react"
 import {useStore} from "./store"
 function ListNotes(){
+    const sessionStatus = useStore((state) => state.sessionStatus);
+    const sessionStatusErrorSwitch = useStore((state) => state.setSessionStatusErrorSwitch)
+    
     function openDropDown(){
+        if(!sessionStatus){
+            sessionStatusErrorSwitch(true)
+            return;
+        }
         setIsOpen(!isOpen);
     }
     const [isOpen, setIsOpen] = useState(false);

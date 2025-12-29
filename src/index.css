@@ -656,6 +656,15 @@ input::placeholder{
   color: green;
   
 }
+#noNotesDiv{
+  display: flex;
+  height: 7.3vh;
+  width: 100%;
+  background-color: black;
+  color: green;
+  align-items: center;
+  justify-content: center;
+}
 .listedCoursesInfoWrapper{
   display: flex;
   flex-direction: row;
