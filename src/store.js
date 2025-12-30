@@ -297,6 +297,7 @@ export const useStore = create((set,get) =>({
             set({courseNameForListingTitle: "all"});
             set({allCourses: true});
         } else{
+            set({noteBoolean: false})
             set({allCourses: false});
             set({specificCourse: allOrSpecificId})
             const whichCourse = get().courseList.find(course => course.id === get().specificCourse);
