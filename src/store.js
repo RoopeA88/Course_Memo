@@ -314,6 +314,14 @@ export const useStore = create((set,get) =>({
         let newNotes = get().noteListWithSessionId;
         newNotes = newNotes.filter(note =>  note.course.id !== courseId);
         set({noteListWithSessionId: newNotes});
+        if(get().activeCourse == courseId){
+            set({noteBoolean: false});
+            set({courseInfoSwitch: false});
+        }
+        if(get().noteListWithSessionId.length == 0){
+            set({noteBoolean: false});
+            set({courseInfoSwitch: false});
+        }
     },
     delNote: (noteId) => {
         let newNoteList = get().noteListWithSessionId;

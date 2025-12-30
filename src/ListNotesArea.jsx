@@ -9,9 +9,9 @@ function ListNotesArea(){
             <div id="listNotesAreaDiv">
                 <div id="listNotesTitleDiv"></div>
                 <div id="sessionNotesDiv">
-                {noteListWithSessionId.map((note) =>{
+                {noteListWithSessionId.map((note, index) =>{
                     if(note.sessionId == sessionId){
-                        return <div className="currentSessionMappedDiv">  
+                        return <div className="currentSessionMappedDiv" key= {index}>  
                             {note.text}
                         </div>
                     }
