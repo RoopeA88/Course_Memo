@@ -274,6 +274,7 @@ export const useStore = create((set,get) =>({
         set({disableAddBoolean: true});
     },
     saveNote: () => {
+        set({inputMessage: ""});
         set({sessionStatus: false});
         set({noteBoolean: false});
         set({listNotesBoolean: true});
